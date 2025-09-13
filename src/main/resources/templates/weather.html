@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-g">
+    <title>Spring Boot Weather App</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Weather Forecast</h1>
+    <form th:action="@{/weather}" method="get">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+    <div th:if="${error}" class="weather-card error">
+        <p th:text="${error}"></p>
+    </div>
+
+    <div th:if="${city}" class="weather-card">
+        <h2 th:text="${city}"></h2>
+        <p><strong>Temperature:</strong> <span th:text="${temperature}"></span> &deg;C</p>
+        <p><strong>Description:</strong> <span th:text="${description}"></span></p>
+        <p><strong>Humidity:</strong> <span th:text="${humidity}"></span> %</p>
+    </div>
+</div>
+</body>
+</html>
